@@ -1,0 +1,55 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+public class Visualisation {
+
+    Graf graf;
+
+    @BeforeEach
+    public void setUp() {
+        graf = new Graf();
+        graf.addVertex(1);
+        graf.addVertex(2);
+        graf.addVertex(3);
+        graf.addVertex(4);
+        graf.addVertex(5);
+
+        graf.addEdge(1, 2, 10);
+        graf.addEdge(1, 3, 15);
+        graf.addEdge(1, 4, 20);
+        graf.addEdge(2, 3, 35);
+        graf.addEdge(2, 4, 25);
+        graf.addEdge(3, 4, 30);
+        graf.addEdge(3,5, 20);
+
+    }
+
+    public void kruskalTest() {
+        List<Edge> mst = graf.kruskal();
+        System.out.println("Minimalne drzewo rozpinające (MST) uzyskane za pomocą algorytmu Kruskala:");
+        for (Edge edge : mst) {
+            System.out.println(edge.v1.id + " - " + edge.v2.id + " : " + edge.weight);
+        }
+    }
+    @Test
+    public void primTest() {
+        System.out.println("Algorytm Prima:");
+
+        List<Edge> mst = graf.prim(1);
+        int totalWeight = 0;
+
+        for (Edge edge : mst) {
+            System.out.println("Krawędź: " + edge.v1.id + " <-> " + edge.v2.id + ", Waga: " + edge.weight);
+            totalWeight += edge.weight;
+        }
+
+        System.out.println("Suma wag MST: " + totalWeight);
+    }
+    @Test
+    public void coloringTest() {
+        int numColors = graf.greedyColoring();
+        System.out.println("Minimalna liczba kolorów potrzebnych do pokolorowania grafu: " + numColors);
+    }
+}
