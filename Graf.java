@@ -140,9 +140,9 @@ public class Graf {
         return mst;
     }
 
-    class UnionFind {
-        private int[] parent;
-        private int[] rank;
+    static class UnionFind {
+        private final int[] parent;
+        private final int[] rank;
 
         public UnionFind(int size) {
             parent = new int[size];
@@ -234,7 +234,6 @@ public class Graf {
     }
 
 }
-
 
 
 
