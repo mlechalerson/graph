@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class Visualisation {
+public class GrafVisualisation {
 
     Graf graf;
 
@@ -26,6 +26,7 @@ public class Visualisation {
 
     }
 
+    @Test
     public void kruskalTest() {
         List<Edge> mst = graf.kruskal();
         System.out.println("Minimalne drzewo rozpinające (MST) uzyskane za pomocą algorytmu Kruskala:");
